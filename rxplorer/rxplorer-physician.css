@@ -1,0 +1,48 @@
+.ps-entries {
+    display: block;
+    padding-top: 1em;
+}
+
+.ps-entry {
+    display: block;
+    width: 49%;
+}
+
+.ps-progress-spinner {
+    display: none;
+    height: 32;
+    width: 32;
+}
+
+.ps-filters {
+    padding-top: 1em;
+    display: block;
+}
+.ps-filter {
+    display: inline-block;
+}
+
+.ps-filter {
+    display: inline-block;
+    width: 49%;
+}
+.ps-filter select,input {
+    display: inline-block;
+    width: 75%;
+}
+
+.ps-status-warn {
+    background-color: #FFFAAA;
+    fill: #FFFFAA;
+}
+.ps-status-err, .ps-error-msg {
+    background-color: #FFAAAA;
+    fill: #FFAAAA;
+}
+
+.ps-map {
+    display: block;
+}
+.ps-results {
+    display: block;
+}

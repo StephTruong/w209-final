@@ -1,0 +1,50 @@
+/* Each tl-column is an "inline-block", so we can use block styling in
+them, but they will be laid out horizontally like inline content
+(text, spans, etc.); i.e., the box have have rows inside, but will be
+packed to fill rows in its containing box. */
+.tl-column {
+    display: inline-block;
+    width: 45%;
+    padding: 1%;
+}
+
+.tl-chart rect {
+    fill: #62b5d1;
+}
+
+/* set the container for the hover tooltip. */
+#tl-tooltip {
+    opacity: 0; /* overridden by js */
+    position: absolute;			
+    text-align: center;
+    width: 200px;					
+    height: 90px;					
+    padding: 2px;				
+    font: 12px sans-serif;		
+    background: white;	
+    border: solid;
+    border-width: 1px;	
+    border-color: black;	
+    border-radius: 5px;			
+    pointer-events: none;
+    z-index:5;			
+}
+
+
+/*css for the strip plot axis.*/
+.tl-strip-axis path,line {
+    fill: none;
+    stroke: none;
+    shape-rendering: crispEdges;
+}
+
+.tl-strip-axis text {
+    font-family: sans-serif;
+    font-size: 11px;
+}
+
+.tl-rxlabel,.tl-quantlabel {
+    font-family: sans-serif;
+    font-size: 15px;
+    fill: black;
+}

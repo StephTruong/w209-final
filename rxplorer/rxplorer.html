@@ -1,0 +1,110 @@
+<?xml version='1.0' encoding='utf-8'?>
+<html xmlns='http:///www.w3.org/1999/xhtml'>
+  <head>
+    <title>Physician ℞Plorer</title>
+    <meta charset='utf-8'/>
+    <meta name='viewport' content='width=device-width, height=device-height, initial-scale=1'/>
+    <link rel='stylesheet' href='/css/leaflet.css' />
+    <link rel='stylesheet' href='/css/jquery.dataTables.min.css'/>
+    <link rel='stylesheet' href='rxplorer-physician.css'/>
+    <script src='/js/jquery-2.2.3.min.js'></script>
+    <script src='/js/d3.min.js'></script>
+    <script src="/js/plotly.min.js"></script>
+    <script src='/js/leaflet.js'></script>
+    <script src='/js/jquery.dataTables.min.js'></script>
+    <script src='/js/oboe-browser.min.js'></script>
+    <script src='rxplorer-sql.js'></script>
+    <script src='rxplorer-map.js'></script>
+    <script src='rxplorer-physician.js'></script>
+    <script src='rxplorer-tl.js'></script>
+    <style>
+      * { vertical-align:top; }
+
+      /* inline-block diplay + a bit under half width to make these into 2 columns */
+      .rx-column {
+          max-width: 48%;
+          display: inline-block;
+      }
+
+      /* make headings more uniform */
+      h1,h2,h3,h4,h5,h6 {
+          font-family: sans;
+          font-weight: bold;
+      }
+      h1,.rx-title {
+          font-size: xx-large;
+      }
+      h2,.rx-subtitle {
+          font-size: x-large;
+          font-style: oblique;
+          padding-bottom: 1em;
+      }
+      h3,.rx-heading {
+	  font-weight: 500;
+          font-size: large;
+      }      
+      h3,.rx-subheading {
+	  font-weight: 500;
+          font-size: medium;
+          font-style: oblique;
+      }
+      .rx-hidden {
+          display: none;
+          visibility: hidden;
+      }
+	  
+    </style>
+  </head>
+  <body>
+    <!-- Final project notes: we just define a few empty div in the
+         HTML.  Since they're top-level items and we care about each
+         one's identity, they have IDs.  In JS, we select them by ID
+         and pass them to the module that fill in their content using
+         DOM.
+
+         These modules identify their inserted content underneath the
+         provided container by class rather than ID, so that we could
+         have two containers on the same page with independent
+         instances. -->
+    
+    <h1 class='rx-title'>Physician <!--R<sub>x</sub>-->℞Plorer</h1>
+    <h2 class='rx-subtitle'>Visualizing the relationship between pharmaceutical company payments and drug prescriptions</h2>
+    <div>
+      <div id='rx-physician-selector'> </div>
+      <div id='rx-table-lens-holder' class='rx-hidden'>
+	<div id='rx-table-lens'>
+	</div>
+	<div>
+	  <input id='rx-select-again' type='button' value='Return to selector' style='width:auto;'/>
+	</div>
+      </div>
+    </div>
+    <script>
+      function activate_table_lens(physician) {
+          console.log('Creating table lens for', physician);
+          $('#rx-physician-selector').addClass('rx-hidden');
+          $('#rx-table-lens-holder').removeClass('rx-hidden');
+	  tableLens.init('#rx-table-lens', physician);
+      }
+      function activate_physician_selector() {
+          $('#rx-physician-selector').removeClass('rx-hidden');
+          $('#rx-table-lens-holder').addClass('rx-hidden').empty()
+      }
+      $(document).ready(function(){
+          physician.init($('#rx-physician-selector'));
+          physician.on_results_table_row_click(activate_table_lens);
+	  physician.marker_cb(function(ev) {
+	      console.log("this", this);
+	      console.log("args", arguments);
+  	      activate_table_lens($(ev.target).data().psData);
+	  });
+	  $('#rx-select-again').on('click',function(data){
+	      activate_physician_selector(data);
+	      });
+	 });
+	 if(location.search=='?test-tl') {
+ 	     activate_table_lens({name: "Firstname", lastName: "Last-Name", physId: 348327});
+	 }
+    </script>
+  </body>
+</html>

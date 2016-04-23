@@ -1,0 +1,18 @@
+/*Update statements for NatureOfPaymentOrTransferOfValue */
+
+Update OpenPaymentPrescrJoin4
+Set NatureOfPaymentOrTransferOfValue = 'Food & Beverage'
+where NatureOfPaymentOrTransferOfValue= 'Food and Beverage'; 
+
+Update OpenPaymentPrescrJoin4
+Set NatureOfPaymentOrTransferOfValue = 'Travel & Lodging'
+where NatureOfPaymentOrTransferOfValue = 'Travel and Lodging';
+
+Update OpenPaymentPrescrJoin4
+Set NatureOfPaymentOrTransferOfValue = 'Royalty/License'
+where NatureOfPaymentOrTransferOfValue = 'Royalty or License';
+
+Update OpenPaymentPrescrJoin4
+Set NatureOfPaymentOrTransferOfValue = 'Faculty/Speaking Fee'
+where NatureOfPaymentOrTransferOfValue like 'Compensation%';
+

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"e>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Physicians' Pharma Relationships</title>
+    <link rel="stylesheet" href="rxplorer-tl.css" />
+    <script src="/js/jquery-2.2.3.min.js"></script>
+    <script src="/js/d3.min.js"></script>
+    <script src="/js/oboe-browser.min.js"></script>
+    <script src="rxplorer-sql.js"></script>
+    <script src="rxplorer-tl.js"></script>
+  </head>
+  <body>
+    <!-- Putting all this in a div so we can pass a selector to the
+         JS telling it where to draw.  This lets us easily mix
+         elements from each of the scripts -->
+    <div class='tl-root'>
+      <h1>Physicians' Pharma Relationships 2013-14</h1>
+      <!-- each tl-column holds a strip plot, title, and chart -->
+      <!-- Left column (chart 1) -->
+      <div class="tl-column tl-payments">
+	<div class="tl-strip-plot"></div>
+    	<h2>Payments from Pharmacuetical Companies</h2>
+	<div class="tl-chart"></div>
+      </div>
+      
+      <!-- Left column (chart 2) -->
+      <div class="tl-column tl-rxcount">
+	<div class="tl-strip-plot"></div>
+	<h2>Medicare Part D Prescriptions Written - 2013</h2>
+	<div class="tl-chart"></div>
+      </div>
+      <!-- div for hover tooltip -->
+      <div class="tl-tooltip" id="tl-hover-graph">
+      </div>
+    </div>
+    <script>
+      $(document).ready(function(){
+        {name: 'STEPHEN DALE',
+        lastName: 'GRUBB',
+        addr: '909 Pireway Rd',
+        city: 'Tabor City',
+	state: 'NC',
+    </script>
+  </body>
+</html>

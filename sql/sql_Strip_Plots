@@ -1,0 +1,22 @@
+Use final;
+
+Select 
+DrugName
+,sum(AmountOfPaymentUSDollarsAgg) as PmtCnt
+,sum(TotalClaimCountAgg) as RxCnt
+from OpenPaymentPrescrJoin4
+group by DrugName
+limit 10;
+
+
+Select 
+DrugName
+,sum(case when AmountOfPaymentUSDollarsAgg is null then 0 Else AmountOfPaymentUSDollarsAgg End) as PmtCnt
+,sum(case when TotalClaimCountAgg is null then 0 Else TotalClaimCountAgg End) as RxCnt
+from OpenPaymentPrescrJoin4
+group by DrugName
+limit 10;
+
+
+
+
